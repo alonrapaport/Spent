@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הזמנה לחגוג את הולדת ליבי שמחה</title>
+  <meta name="description" content="יעל ואלון רפפורט שמחים להזמין אתכם לחגוג את הולדת בתם, ליבי שמחה. יום שישי, 26.06.26, בית שמש." />
+
+  <!-- Open Graph (WhatsApp / link previews) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ליבי שמחה הגיעה! בואו לחגוג איתנו" />
+  <meta property="og:description" content="יעל ואלון רפפורט מזמינים אתכם לחגוג את הולדת בתם. יום שישי, 26.06.26, בשעה 11:30, רחוב רש״י 19, בית שמש." />
+  <meta property="og:image" content="https://libby-simcha-2uyu2w.v2.appdeploy.ai/libi.jpg" />
+  <meta property="og:locale" content="he_IL" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #fbf7f2;
+      --cream-deep: #f3e9df;
+      --card: #fffdfb;
+      --ink: #5a4a42;
+      --ink-soft: #8a7a70;
+      --pink: #e2b6b0;
+      --pink-deep: #c0817b;
+      --sage: #a6b58e;
+      --sage-deep: #7f9168;
+      --yellow: #f1dfa6;
+      --line: #ecdfd4;
+      --shadow: 28px 28px 60px rgba(143, 116, 99, 0.14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: "Assistant", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(120% 80% at 100% 0%, #fdf3ee 0%, rgba(253, 243, 238, 0) 55%),
+        radial-gradient(120% 80% at 0% 100%, #f0f3e8 0%, rgba(240, 243, 232, 0) 55%),
+        var(--cream);
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 18px 48px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      background: var(--card);
+      border-radius: 30px;
+      padding: 46px 32px 40px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      text-align: center;
+      isolation: isolate;
+    }
+
+    /* soft botanical corners */
+    .leaf {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      opacity: 0.5;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .leaf--top { top: -26px; left: -30px; transform: rotate(8deg); }
+    .leaf--bottom { bottom: -30px; right: -28px; transform: rotate(186deg); }
+
+    .eyebrow {
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      color: var(--sage-deep);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .intro {
+      font-size: 16.5px;
+      color: var(--ink-soft);
+      max-width: 36ch;
+      margin: 0 auto 6px;
+    }
+    .intro strong { color: var(--ink); font-weight: 600; }
+
+    .name {
+      font-family: "Frank Ruhl Libre", serif;
+      font-weight: 900;
+      font-size: clamp(46px, 15vw, 68px);
+      line-height: 1.05;
+      color: var(--pink-deep);
+      margin: 14px 0 6px;
+      letter-spacing: 0.01em;
+    }
+
+    .name-sub {
+      font-size: 14px;
+      letter-spacing: 0.22em;
+      color: var(--sage-deep);
+      font-weight: 600;
+      text-transform: none;
+      margin-bottom: 22px;
+    }
+
+    .photo-frame {
+      width: 210px;
+      height: 210px;
+      margin: 6px auto 26px;
+      border-radius: 50%;
+      padding: 8px;
+      background: linear-gradient(135deg, var(--pink) 0%, var(--yellow) 55%, var(--sage) 100%);
+      box-shadow: 0 14px 30px rgba(192, 129, 123, 0.28);
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--card);
+      display: block;
+    }
+
+    .warm {
+      font-size: 16.5px;
+      color: var(--ink);
+      max-width: 32ch;
+      margin: 0 auto;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 26px auto;
+      max-width: 260px;
+      color: var(--pink);
+    }
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--line), transparent);
+    }
+    .divider svg { width: 26px; height: 26px; flex: none; }
+
+    .details {
+      background: linear-gradient(180deg, #fffaf4 0%, #fdf4ec 100%);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px 22px;
+      margin: 4px 0 28px;
+      text-align: right;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 11px 0;
+    }
+    .row + .row { border-top: 1px dashed var(--line); }
+    .row .icon {
+      flex: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(143, 116, 99, 0.12);
+      color: var(--pink-deep);
+    }
+    .row .icon svg { width: 22px; height: 22px; }
+    .row .text { line-height: 1.35; }
+    .row .label {
+      font-size: 12.5px;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+    .row .value { font-size: 17px; font-weight: 600; color: var(--ink); }
+    .row .value small { font-weight: 400; color: var(--ink-soft); font-size: 14px; }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 12px;
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn svg { width: 19px; height: 19px; flex: none; }
+    .btn--waze {
+      background: var(--sage-deep);
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(127, 145, 104, 0.32);
+    }
+    .btn--maps {
+      background: #fff;
+      color: var(--pink-deep);
+      border: 1.5px solid var(--pink);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .signoff {
+      font-size: 16px;
+      color: var(--ink-soft);
+    }
+    .signoff .parents {
+      font-family: "Frank Ruhl Libre", serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--pink-deep);
+      margin-top: 4px;
+    }
+
+    /* gentle entrance */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .reveal:nth-child(1) { animation-delay: 0.05s; }
+    .card > .reveal:nth-child(2) { animation-delay: 0.12s; }
+    .card > .reveal:nth-child(3) { animation-delay: 0.19s; }
+    .card > .reveal:nth-child(4) { animation-delay: 0.26s; }
+    .card > .reveal:nth-child(5) { animation-delay: 0.33s; }
+    .card > .reveal:nth-child(6) { animation-delay: 0.4s; }
+    .card > .reveal:nth-child(7) { animation-delay: 0.47s; }
+    .card > .reveal:nth-child(8) { animation-delay: 0.54s; }
+    .card > .reveal:nth-child(9) { animation-delay: 0.61s; }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 380px) {
+      .card { padding: 38px 22px 34px; }
+      .photo-frame { width: 180px; height: 180px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none; opacity: 1; transform: none; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <!-- botanical corner accents -->
+    <svg class="leaf leaf--top" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <path d="M20 100C20 60 45 30 95 22" stroke="#a6b58e" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M55 58c-10-4-22-2-30 6 10 5 22 3 30-6z" fill="#c5d3aa"/>
+      <path d="M70 44c-6-9-5-21 2-30 6 9 5 21-2 30z" fill="#cdd9b4"/>
+      <path d="M78 70c10-3 17-12 18-23-10 2-18 11-18 23z" fill="#e7c6c0"/>
+    </svg>
+    <svg class="leaf leaf--bottom" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <path d="M20 100C20 60 45 30 95 22" stroke="#e2b6b0" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M55 58c-10-4-22-2-30 6 10 5 22 3 30-6z" fill="#eccdc7"/>
+      <path d="M70 44c-6-9-5-21 2-30 6 9 5 21-2 30z" fill="#f1d9a8"/>
+      <path d="M78 70c10-3 17-12 18-23-10 2-18 11-18 23z" fill="#c5d3aa"/>
+    </svg>
+
+    <p class="eyebrow reveal">בשורה משמחת</p>
+
+    <p class="intro reveal">
+      הלב שלנו התמלא בשמחה גדולה,<br />
+      ואנו נרגשים להזמין אתכם לחגוג איתנו את הולדת בתנו
+    </p>
+
+    <h1 class="name reveal">ליבי שמחה</h1>
+    <p class="name-sub reveal">כי היא כל הלב שלנו</p>
+
+    <div class="photo-frame reveal">
+      <img src="./libi.jpg" alt="ליבי שמחה, התינוקת שזה עתה נולדה" />
+    </div>
+
+    <p class="warm reveal">נשמח לראותכם, לחבק ולהתרגש יחד איתנו</p>
+
+    <div class="divider reveal" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 20.5C7 16.8 3.5 13.8 3.5 9.8 3.5 7 5.6 5 8.2 5c1.7 0 3 .9 3.8 2.2C12.8 5.9 14.1 5 15.8 5c2.6 0 4.7 2 4.7 4.8 0 4-3.5 7-8.5 10.7z"
+              stroke="#c0817b" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <section class="details reveal" aria-label="פרטי האירוע">
+      <div class="row">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/>
+          </svg>
+        </span>
+        <span class="text">
+          <span class="label">מתי</span>
+          <span class="value">יום שישי <small>· י״א בתמוז תשפ״ו · 26.06.26</small></span>
+        </span>
+      </div>
+      <div class="row">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/>
+          </svg>
+        </span>
+        <span class="text">
+          <span class="label">התכנסות בשעה</span>
+          <span class="value">11:30</span>
+        </span>
+      </div>
+      <div class="row">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>
+          </svg>
+        </span>
+        <span class="text">
+          <span class="label">איפה</span>
+          <span class="value">רחוב רש״י 19, דירה 1 <small>· בית שמש</small></span>
+        </span>
+      </div>
+    </section>
+
+    <div class="buttons reveal">
+      <a class="btn btn--waze" href="https://waze.com/ul?q=%D7%A8%D7%97%D7%95%D7%91%20%D7%A8%D7%A9%22%D7%99%2019%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9&navigate=yes" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C7 2 3 5.7 3 10.3c0 2.7 1.5 5 3.8 6.5.2.7 0 1.8-.6 2.9-.2.4.1.9.6.8 1.9-.3 3.3-1 4.2-1.8h1C16.9 18.7 21 15 21 10.3 21 5.7 17 2 12 2zm-3.3 8.5a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm6.6 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6z"/></svg>
+        ניווט ב‑Waze
+      </a>
+      <a class="btn btn--maps" href="https://www.google.com/maps/search/?api=1&query=%D7%A8%D7%97%D7%95%D7%91%20%D7%A8%D7%A9%22%D7%99%2019%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        Google Maps
+      </a>
+    </div>
+
+    <p class="signoff reveal">
+      מחכים לכם בהתרגשות,
+      <span class="parents">יעל ואלון רפפורט</span>
+    </p>
+  </main>
+</body>
+</html>
