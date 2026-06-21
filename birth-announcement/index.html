@@ -80,6 +80,24 @@
     .leaf--top { top: -26px; left: -30px; transform: rotate(8deg); }
     .leaf--bottom { bottom: -30px; right: -28px; transform: rotate(186deg); }
 
+    /* delicate illustrated background: pacifier, teddy, bagel, cheese, smoked salmon */
+    .motif-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.3;
+    }
+    .bg-pattern {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .page-bg svg, .bg-pattern svg { width: 100%; height: 100%; display: block; }
+
     .eyebrow {
       font-size: 14px;
       letter-spacing: 0.14em;
@@ -271,7 +289,67 @@
   </style>
 </head>
 <body>
+  <!-- shared motif definitions + tiling pattern -->
+  <svg class="motif-defs" aria-hidden="true">
+    <defs>
+      <symbol id="m-paci" viewBox="0 0 48 48">
+        <circle cx="24" cy="26" r="11" fill="#f0c6d0"/>
+        <circle cx="24" cy="26" r="4" fill="#fff5f7"/>
+        <circle cx="24" cy="13" r="5.5" fill="none" stroke="#e3a9b6" stroke-width="2.6"/>
+        <rect x="20.5" y="35" width="7" height="7.5" rx="3.3" fill="#f3d2da"/>
+      </symbol>
+      <symbol id="m-teddy" viewBox="0 0 48 48">
+        <g fill="#e6d2b8" stroke="#cdb393" stroke-width="1.6">
+          <circle cx="14" cy="14" r="5"/>
+          <circle cx="34" cy="14" r="5"/>
+          <circle cx="24" cy="26" r="13"/>
+        </g>
+        <circle cx="24" cy="29" r="5.5" fill="#d8bf9d"/>
+        <circle cx="19" cy="23" r="1.6" fill="#7a6552"/>
+        <circle cx="29" cy="23" r="1.6" fill="#7a6552"/>
+        <circle cx="24" cy="27.5" r="1.8" fill="#7a6552"/>
+      </symbol>
+      <symbol id="m-bagel" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="15" fill="#e3bd7e"/>
+        <circle cx="24" cy="24" r="6" fill="#fbf6ef"/>
+        <g fill="#cf9f57">
+          <circle cx="24" cy="11" r="1.3"/><circle cx="33" cy="16" r="1.3"/>
+          <circle cx="36" cy="26" r="1.3"/><circle cx="30" cy="34" r="1.3"/>
+          <circle cx="18" cy="35" r="1.3"/><circle cx="12" cy="27" r="1.3"/>
+          <circle cx="13" cy="17" r="1.3"/>
+        </g>
+      </symbol>
+      <symbol id="m-cheese" viewBox="0 0 48 48">
+        <path d="M9 33 L39 17 L39 33 Z" fill="#efd57f" stroke="#e2c365" stroke-width="1.4" stroke-linejoin="round"/>
+        <circle cx="20" cy="30" r="2.2" fill="#e3c469"/>
+        <circle cx="30" cy="27" r="1.8" fill="#e3c469"/>
+        <circle cx="33" cy="31" r="1.5" fill="#e3c469"/>
+      </symbol>
+      <symbol id="m-salmon" viewBox="0 0 48 48">
+        <path d="M10 30 C16 20 24 20 30 26 C34 30 40 30 40 30 C40 36 34 38 28 35 C22 32 16 36 10 34 Z" fill="#f0a98d"/>
+        <g fill="none" stroke="#f8d0c1" stroke-width="1.5" stroke-linecap="round">
+          <path d="M14 31 C20 25 26 25 31 30"/>
+          <path d="M14 34 C20 29 27 29 33 33"/>
+        </g>
+      </symbol>
+      <pattern id="motifPattern" patternUnits="userSpaceOnUse" width="190" height="190" patternTransform="rotate(-6)">
+        <use href="#m-paci" x="6" y="14" width="44" height="44" transform="rotate(-12 28 36)"/>
+        <use href="#m-teddy" x="116" y="8" width="44" height="44" transform="rotate(9 138 30)"/>
+        <use href="#m-salmon" x="70" y="64" width="46" height="46" transform="rotate(10 93 87)"/>
+        <use href="#m-bagel" x="20" y="112" width="46" height="46" transform="rotate(-4 43 135)"/>
+        <use href="#m-cheese" x="126" y="118" width="46" height="46" transform="rotate(-8 149 141)"/>
+      </pattern>
+    </defs>
+  </svg>
+
+  <div class="page-bg" aria-hidden="true">
+    <svg><rect width="100%" height="100%" fill="url(#motifPattern)"/></svg>
+  </div>
+
   <main class="card">
+    <div class="bg-pattern" aria-hidden="true">
+      <svg><rect width="100%" height="100%" fill="url(#motifPattern)"/></svg>
+    </div>
     <!-- botanical corner accents -->
     <svg class="leaf leaf--top" viewBox="0 0 120 120" fill="none" aria-hidden="true">
       <path d="M20 100C20 60 45 30 95 22" stroke="#a6b58e" stroke-width="2.5" stroke-linecap="round"/>
