@@ -176,6 +176,24 @@
     }
     .divider svg { width: 26px; height: 26px; flex: none; }
 
+    .countdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 auto 18px;
+      padding: 7px 18px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #fdf2cf 0%, #f8e6ad 100%);
+      border: 1px solid #eed9a0;
+      color: #8a6d2f;
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      box-shadow: 0 6px 16px rgba(214, 184, 110, 0.25);
+    }
+    .countdown svg { width: 16px; height: 16px; flex: none; }
+    .countdown[hidden] { display: none; }
+
     .details {
       background: linear-gradient(180deg, #fffaf4 0%, #fdf4ec 100%);
       border: 1px solid var(--line);
@@ -213,26 +231,27 @@
     .row .value { font-size: 17px; font-weight: 600; color: var(--ink); }
     .row .value small { font-weight: 400; color: var(--ink-soft); font-size: 14px; }
 
-    .buttons {
+    .icon-actions {
       display: flex;
-      gap: 12px;
+      justify-content: center;
+      gap: 16px;
       margin-bottom: 30px;
     }
-    .btn {
-      flex: 1;
+    .btn-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
-      padding: 14px 12px;
-      border-radius: 16px;
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: 700;
-      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(143, 116, 99, 0.14);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .btn svg { width: 19px; height: 19px; flex: none; }
+    .btn-icon svg { width: 25px; height: 25px; }
+    .btn-icon:hover { transform: translateY(-2px); }
+    .btn-icon:active { transform: translateY(0); }
+
     .btn--waze {
       background: var(--sage-deep);
       color: #fff;
@@ -243,8 +262,16 @@
       color: var(--pink-deep);
       border: 1.5px solid var(--pink);
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn:active { transform: translateY(0); }
+    .btn--cal {
+      background: linear-gradient(180deg, #fdf2cf 0%, #f8e6ad 100%);
+      color: #8a6d2f;
+      border: 1.5px solid #ecd9a3;
+    }
+    .btn--share {
+      background: #fff;
+      color: var(--sage-deep);
+      border: 1.5px solid var(--sage);
+    }
 
     .signoff {
       font-size: 16px;
@@ -278,6 +305,40 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* one-time celebratory hearts on load */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hearts span {
+      position: absolute;
+      bottom: -40px;
+      aspect-ratio: 1;
+      opacity: 0;
+      animation: floatUp 4.2s ease-in forwards;
+    }
+    .hearts svg { width: 100%; height: 100%; display: block; }
+    .hearts span:nth-child(1)  { left: 6%;  width: 18px; animation-delay: 0.10s; animation-duration: 4.4s; }
+    .hearts span:nth-child(2)  { left: 18%; width: 26px; animation-delay: 0.50s; animation-duration: 3.8s; }
+    .hearts span:nth-child(3)  { left: 30%; width: 16px; animation-delay: 0.00s; animation-duration: 4.8s; }
+    .hearts span:nth-child(4)  { left: 42%; width: 22px; animation-delay: 0.80s; animation-duration: 4.0s; }
+    .hearts span:nth-child(5)  { left: 54%; width: 28px; animation-delay: 0.30s; animation-duration: 4.6s; }
+    .hearts span:nth-child(6)  { left: 64%; width: 17px; animation-delay: 1.00s; animation-duration: 3.9s; }
+    .hearts span:nth-child(7)  { left: 74%; width: 24px; animation-delay: 0.20s; animation-duration: 4.5s; }
+    .hearts span:nth-child(8)  { left: 84%; width: 19px; animation-delay: 0.70s; animation-duration: 4.1s; }
+    .hearts span:nth-child(9)  { left: 92%; width: 22px; animation-delay: 0.45s; animation-duration: 4.7s; }
+    .hearts span:nth-child(10) { left: 48%; width: 15px; animation-delay: 1.20s; animation-duration: 4.3s; }
+
+    @keyframes floatUp {
+      0%   { opacity: 0;    transform: translateY(0) scale(0.7) rotate(0deg); }
+      12%  { opacity: 0.85; }
+      80%  { opacity: 0.85; }
+      100% { opacity: 0;    transform: translateY(-112vh) scale(1) rotate(14deg); }
+    }
+
     @media (max-width: 380px) {
       .card { padding: 28px 22px 34px; }
       .photo-frame { width: 132px; height: 132px; }
@@ -285,7 +346,8 @@
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { animation: none; opacity: 1; transform: none; }
-      .btn { transition: none; }
+      .btn-icon { transition: none; }
+      .hearts { display: none; }
     }
   </style>
 </head>
@@ -355,7 +417,7 @@
     </svg>
 
     <p class="intro reveal">
-      בלב מלא שמחה אנו נרגשים להזמין אתכם לחגוג איתנו<br />
+      בלב מלא שמחה אנחנו מתרגשים להזמין אתכם לחגוג איתנו<br />
       את הולדת בתנו,
     </p>
 
@@ -372,6 +434,11 @@
         <path d="M12 20.5C7 16.8 3.5 13.8 3.5 9.8 3.5 7 5.6 5 8.2 5c1.7 0 3 .9 3.8 2.2C12.8 5.9 14.1 5 15.8 5c2.6 0 4.7 2 4.7 4.8 0 4-3.5 7-8.5 10.7z"
               stroke="#c0817b" stroke-width="1.6" stroke-linejoin="round"/>
       </svg>
+    </div>
+
+    <div class="countdown reveal" id="countdown" hidden>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:#d8a23f"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg>
+      <span id="countdown-text"></span>
     </div>
 
     <section class="details reveal" aria-label="פרטי האירוע">
@@ -407,21 +474,88 @@
       </div>
     </section>
 
-    <div class="buttons reveal">
-      <a class="btn btn--waze" href="https://waze.com/ul?q=%D7%A8%D7%97%D7%95%D7%91%20%D7%A8%D7%A9%22%D7%99%2019%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9&navigate=yes" target="_blank" rel="noopener">
+    <div class="icon-actions reveal">
+      <a class="btn-icon btn--waze" href="https://waze.com/ul?q=%D7%A8%D7%97%D7%95%D7%91%20%D7%A8%D7%A9%22%D7%99%2019%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9&navigate=yes" target="_blank" rel="noopener" aria-label="ניווט ב‑Waze" title="ניווט ב‑Waze">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C7 2 3 5.7 3 10.3c0 2.7 1.5 5 3.8 6.5.2.7 0 1.8-.6 2.9-.2.4.1.9.6.8 1.9-.3 3.3-1 4.2-1.8h1C16.9 18.7 21 15 21 10.3 21 5.7 17 2 12 2zm-3.3 8.5a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm6.6 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6z"/></svg>
-        ניווט ב‑Waze
       </a>
-      <a class="btn btn--maps" href="https://www.google.com/maps/search/?api=1&query=%D7%A8%D7%97%D7%95%D7%91%20%D7%A8%D7%A9%22%D7%99%2019%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9" target="_blank" rel="noopener">
+      <a class="btn-icon btn--maps" href="https://www.google.com/maps/search/?api=1&query=%D7%A8%D7%97%D7%95%D7%91%20%D7%A8%D7%A9%22%D7%99%2019%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9" target="_blank" rel="noopener" aria-label="Google Maps" title="Google Maps">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-        Google Maps
       </a>
+      <a class="btn-icon btn--cal" href="./libi.ics" aria-label="הוספה ליומן" title="הוספה ליומן">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9h18M8 2.5v4M16 2.5v4M12 13v4M10 15h4"/></svg>
+      </a>
+      <button type="button" class="btn-icon btn--share" id="shareBtn" aria-label="שיתוף" title="שיתוף">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg>
+      </button>
     </div>
 
     <p class="signoff reveal">
-      מחכים לכם בהתרגשות,
+      נשמח לראותכם,
       <span class="parents">יעל, אלון וליבי רפפורט</span>
     </p>
   </main>
+
+  <div class="hearts" aria-hidden="true">
+    <span><svg viewBox="0 0 24 24" fill="#e2b6b0"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
+    <span><svg viewBox="0 0 24 24" fill="#a6b58e"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
+    <span><svg viewBox="0 0 24 24" fill="#ecd28a"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
+    <span><svg viewBox="0 0 24 24" fill="#e2b6b0"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
+    <span><svg viewBox="0 0 24 24" fill="#a6b58e"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
+    <span><svg viewBox="0 0 24 24" fill="#ecd28a"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
+    <span><svg viewBox="0 0 24 24" fill="#e2b6b0"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
+    <span><svg viewBox="0 0 24 24" fill="#a6b58e"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
+    <span><svg viewBox="0 0 24 24" fill="#ecd28a"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
+    <span><svg viewBox="0 0 24 24" fill="#e2b6b0"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
+  </div>
+
+  <script>
+    (function () {
+      // Countdown to the celebration (26 June 2026)
+      try {
+        var el = document.getElementById("countdown");
+        var txt = document.getElementById("countdown-text");
+        if (el && txt) {
+          var target = new Date(2026, 5, 26);
+          var now = new Date();
+          var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          var days = Math.round((target - today) / 86400000);
+          var msg = "";
+          if (days > 2) msg = "עוד " + days + " ימים";
+          else if (days === 2) msg = "עוד יומיים";
+          else if (days === 1) msg = "עוד יום אחד";
+          else if (days === 0) msg = "החגיגה היום!";
+          if (msg) { txt.textContent = msg; el.hidden = false; }
+        }
+      } catch (e) {}
+
+      // Share the invitation
+      try {
+        var btn = document.getElementById("shareBtn");
+        if (btn) {
+          var original = btn.innerHTML;
+          var check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+          btn.addEventListener("click", function () {
+            var data = {
+              title: document.title,
+              text: "הוזמנתם לחגוג את הולדת ליבי שמחה",
+              url: location.href
+            };
+            if (navigator.share) {
+              navigator.share(data).catch(function () {});
+            } else if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(location.href).then(function () {
+                btn.innerHTML = check;
+                btn.setAttribute("aria-label", "הקישור הועתק");
+                setTimeout(function () {
+                  btn.innerHTML = original;
+                  btn.setAttribute("aria-label", "שיתוף");
+                }, 1800);
+              }).catch(function () {});
+            }
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
 </body>
 </html>
