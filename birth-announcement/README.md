@@ -6,7 +6,7 @@ A self-contained, single-page digital invitation (Hebrew, right to left) celebra
 - `libi.jpg` - the featured photo.
 - `libi.ics` - calendar event used by the "add to calendar" button.
 
-The event details (Friday, 26.06.26, 11:30, Rishi 19 Apt 1, Beit Shemesh) include one-tap Waze and Google Maps links, an "add to calendar" button, a share button (Web Share with copy-link fallback), a live countdown to the date, and a gentle one-time hearts animation on load (disabled under reduced-motion).
+The event details (Friday, 26.06.26, 12:00, Rishi 19 Apt 1, Beit Shemesh) include one-tap Waze and Google Maps links, an "add to calendar" button, a share button (Web Share with copy-link fallback), a live countdown to the date, and a gentle one-time hearts animation on load (disabled under reduced-motion).
 
 ## Live URL
 
