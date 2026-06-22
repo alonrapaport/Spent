@@ -61,7 +61,7 @@
       max-width: 480px;
       background: var(--card);
       border-radius: 30px;
-      padding: 46px 32px 40px;
+      padding: 32px 32px 40px;
       box-shadow: var(--shadow);
       overflow: hidden;
       text-align: center;
@@ -108,19 +108,20 @@
 
     .intro {
       font-size: 16.5px;
-      color: var(--ink-soft);
-      max-width: 36ch;
+      color: var(--ink);
+      max-width: 32ch;
       margin: 0 auto 6px;
+      text-wrap: balance;
     }
     .intro strong { color: var(--ink); font-weight: 600; }
 
     .name {
       font-family: "Frank Ruhl Libre", serif;
       font-weight: 900;
-      font-size: clamp(46px, 15vw, 68px);
+      font-size: clamp(38px, 12vw, 56px);
       line-height: 1.05;
       color: var(--pink-deep);
-      margin: 14px 0 6px;
+      margin: 10px 0 6px;
       letter-spacing: 0.01em;
     }
 
@@ -134,9 +135,9 @@
     }
 
     .photo-frame {
-      width: 210px;
-      height: 210px;
-      margin: 6px auto 26px;
+      width: 150px;
+      height: 150px;
+      margin: 4px auto 18px;
       border-radius: 50%;
       padding: 8px;
       background: linear-gradient(135deg, var(--pink) 0%, var(--yellow) 55%, var(--sage) 100%);
@@ -162,7 +163,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      margin: 26px auto;
+      margin: 20px auto;
       max-width: 260px;
       color: var(--pink);
     }
@@ -180,7 +181,7 @@
       border: 1px solid var(--line);
       border-radius: 22px;
       padding: 22px 22px;
-      margin: 4px 0 28px;
+      margin: 4px 0 24px;
       text-align: right;
     }
     .row {
@@ -278,8 +279,8 @@
     }
 
     @media (max-width: 380px) {
-      .card { padding: 38px 22px 34px; }
-      .photo-frame { width: 180px; height: 180px; }
+      .card { padding: 28px 22px 34px; }
+      .photo-frame { width: 132px; height: 132px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
