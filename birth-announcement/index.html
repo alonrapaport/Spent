@@ -235,13 +235,14 @@
 
     .icon-actions {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 16px;
+      gap: 12px;
       margin-bottom: 30px;
     }
     .btn-icon {
-      width: 54px;
-      height: 54px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
@@ -259,6 +260,26 @@
     /* brand logos are self-colored; calendar + share are tinted line icons */
     .btn--cal { color: #b9852b; }
     .btn--share { color: var(--sage-deep); }
+    .btn--apple { color: #333; }
+    html[lang="en"] .name { font-size: clamp(30px, 9vw, 44px); }
+    .lang-fab {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      z-index: 7;
+      height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 20px rgba(143, 116, 99, 0.18);
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+    }
 
     /* birth details as a collapsible vintage Israeli birth certificate */
     .birth { margin: 4px auto 8px; }
@@ -607,12 +628,12 @@
       <path d="M78 70c10-3 17-12 18-23-10 2-18 11-18 23z" fill="#c5d3aa"/>
     </svg>
 
-    <p class="intro reveal">
+    <p class="intro reveal" data-i18n="intro">
       בלב מלא שמחה אנחנו מתרגשים להזמין אתכם לחגוג איתנו<br />
       את הולדת בתנו,
     </p>
 
-    <h1 class="name reveal">ליבי שמחה</h1>
+    <h1 class="name reveal" data-i18n="name">ליבי שמחה</h1>
 
     <div class="photo-frame reveal">
       <img src="./libi.jpg" alt="ליבי שמחה, התינוקת שזה עתה נולדה" />
@@ -621,7 +642,7 @@
     <details class="birth reveal">
       <summary class="birth-toggle">
         <svg class="feet" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="8" cy="15" rx="3" ry="4.3"/><circle cx="5.6" cy="9.6" r="1"/><circle cx="7.7" cy="8.8" r="1.1"/><circle cx="9.7" cy="9.2" r="1"/><ellipse cx="16" cy="16" rx="3" ry="4.3"/><circle cx="14.4" cy="10.6" r="1"/><circle cx="16.5" cy="9.8" r="1.1"/><circle cx="18.5" cy="10.2" r="1"/></svg>
-        תעודת לידה
+        <span data-i18n="certToggle">תעודת לידה</span>
         <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </summary>
       <div class="cert">
@@ -639,14 +660,14 @@
             </g>
           </svg>
         </div>
-        <div class="cert__ministry">משרד השמחה</div>
-        <div class="cert__heading">תעודת רישום לידה</div>
-        <div class="cert-row"><span class="k">שם הילודה</span><span class="dots"></span><span class="v">ליבי שמחה</span></div>
-        <div class="cert-row"><span class="k">תאריך הלידה</span><span class="dots"></span><span class="v">31.5.26</span></div>
-        <div class="cert-row"><span class="k">שעת הלידה</span><span class="dots"></span><span class="v">9:58</span></div>
-        <div class="cert-row"><span class="k">משקל</span><span class="dots"></span><span class="v">3.4 ק״ג</span></div>
-        <div class="cert-row"><span class="k">ההורים</span><span class="dots"></span><span class="v">יעל ואלון רפפורט</span></div>
-        <p class="cert__note">וזאת לעדה כי ליבי שמחה הצטרפה אלינו בשמחה גדולה.</p>
+        <div class="cert__ministry" data-i18n="certMinistry">משרד השמחה</div>
+        <div class="cert__heading" data-i18n="certHeading">תעודת רישום לידה</div>
+        <div class="cert-row"><span class="k" data-i18n="kName">שם הילודה</span><span class="dots"></span><span class="v" data-i18n="vName">ליבי שמחה</span></div>
+        <div class="cert-row"><span class="k" data-i18n="kDate">תאריך הלידה</span><span class="dots"></span><span class="v">31.5.26</span></div>
+        <div class="cert-row"><span class="k" data-i18n="kTime">שעת הלידה</span><span class="dots"></span><span class="v">9:58</span></div>
+        <div class="cert-row"><span class="k" data-i18n="kWeight">משקל</span><span class="dots"></span><span class="v" data-i18n="vWeight">3.4 ק״ג</span></div>
+        <div class="cert-row"><span class="k" data-i18n="kParents">ההורים</span><span class="dots"></span><span class="v" data-i18n="vParents">יעל ואלון רפפורט</span></div>
+        <p class="cert__note" data-i18n="certNote">וזאת לעדה כי ליבי שמחה הצטרפה אלינו בשמחה גדולה.</p>
         <svg class="cert__seal" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <circle cx="32" cy="32" r="29"/>
           <circle cx="32" cy="32" r="22" stroke-dasharray="3 3"/>
@@ -676,7 +697,7 @@
           </svg>
         </span>
         <span class="text">
-          <span class="value">יום שישי | י״א בתמוז תשפ״ו | 26.06.26</span>
+          <span class="value" data-i18n="detDate">יום שישי | י״א בתמוז תשפ״ו | 26.06.26</span>
         </span>
       </div>
       <div class="row">
@@ -686,7 +707,7 @@
           </svg>
         </span>
         <span class="text">
-          <span class="value">התכנסות בשעה 12:00</span>
+          <span class="value" data-i18n="detTime">התכנסות בשעה 12:00</span>
         </span>
       </div>
       <div class="row row--copy" id="addrRow" role="button" tabindex="0" aria-label="העתקת הכתובת">
@@ -696,7 +717,7 @@
           </svg>
         </span>
         <span class="text">
-          <span class="value">רחוב רש״י 19, דירה 1, בית שמש</span>
+          <span class="value" data-i18n="detAddr">רחוב רש״י 19, דירה 1, בית שמש</span>
         </span>
         <span class="copy-hint" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
@@ -707,7 +728,7 @@
     <div class="cta-stack reveal">
       <a class="cta cta--rsvp" href="https://wa.me/972526785119?text=%D7%94%D7%99%D7%99%21%20%D7%9E%D7%90%D7%A9%D7%A8%D7%99%D7%9D%20%D7%94%D7%92%D7%A2%D7%94%20%D7%9C%D7%97%D7%92%D7%99%D7%92%D7%94%20%D7%A9%D7%9C%20%D7%9C%D7%99%D7%91%D7%99%20%D7%A9%D7%9E%D7%97%D7%94" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.15 1.6 5.96L2 22l4.25-1.68a9.86 9.86 0 0 0 5.79 1.85h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.8c2.16 0 4.19.84 5.72 2.37a8.02 8.02 0 0 1 2.37 5.72c0 4.46-3.63 8.09-8.1 8.09a8.1 8.1 0 0 1-4.12-1.13l-.3-.18-2.52 1 .67-2.46-.19-.31a8.05 8.05 0 0 1-1.24-4.31c0-4.46 3.63-8.09 8.1-8.09zm-2.74 4.2c-.13 0-.34.05-.52.24-.18.19-.69.67-.69 1.64s.71 1.9.81 2.03c.1.13 1.38 2.21 3.42 3.01 1.7.67 2.05.54 2.42.5.37-.03 1.19-.48 1.36-.95.17-.47.17-.87.12-.95-.05-.08-.18-.13-.38-.23-.2-.1-1.19-.59-1.37-.66-.18-.06-.32-.1-.45.1-.13.19-.51.65-.63.79-.12.13-.23.15-.43.05-.2-.1-.85-.31-1.62-1-.6-.53-1-1.19-1.12-1.39-.12-.2-.01-.31.09-.4.09-.09.2-.23.3-.35.1-.12.13-.2.2-.34.07-.13.03-.25-.02-.35-.05-.1-.44-1.11-.62-1.52-.16-.4-.32-.34-.45-.35z"/></svg>
-        אישור הגעה
+        <span data-i18n="rsvp">אישור הגעה</span>
       </a>
     </div>
 
@@ -733,14 +754,17 @@
       <a class="btn-icon btn--cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%9E%D7%A1%D7%99%D7%91%D7%94%20%D7%9C%D7%99%D7%91%D7%99%20%D7%A9%D7%9E%D7%97%D7%94&dates=20260626T090000Z/20260626T110000Z&details=%D7%A0%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A8%D7%90%D7%95%D7%AA%D7%9B%D7%9D%2C%20%D7%9C%D7%97%D7%91%D7%A7%20%D7%95%D7%9C%D7%94%D7%AA%D7%A8%D7%92%D7%A9%20%D7%99%D7%97%D7%93%20%D7%90%D7%99%D7%AA%D7%A0%D7%95&location=%D7%A8%D7%97%D7%95%D7%91%20%D7%A8%D7%A9%D7%B4%D7%99%2019%2C%20%D7%93%D7%99%D7%A8%D7%94%201%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9" target="_blank" rel="noopener" aria-label="הוספה ליומן Google" title="הוספה ליומן Google">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9h18M8 2.5v4M16 2.5v4M12 13v4M10 15h4"/></svg>
       </a>
+      <a class="btn-icon btn--apple" href="./libi.ics" aria-label="הוספה ליומן אפל" title="הוספה ליומן אפל">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 13c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.4 2 .9 0 1.3-.6 2.4-.6 1.1 0 1.4.6 2.4.6s1.7-.9 2.3-1.9c.7-1 1-2 1-2.1 0 0-1.8-.7-1.8-2.8z"/><path d="M14.5 6.3c.5-.6.9-1.5.8-2.3-.8 0-1.7.5-2.2 1.1-.5.5-.9 1.4-.8 2.2.9.1 1.7-.4 2.2-1z"/></svg>
+      </a>
       <button type="button" class="btn-icon btn--share" id="shareBtn" aria-label="שיתוף" title="שיתוף">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg>
       </button>
     </div>
 
     <p class="signoff reveal">
-      נשמח לראותכם,
-      <span class="parents">יעל, אלון וליבי רפפורט</span>
+      <span data-i18n="signLead">נשמח לראותכם,</span>
+      <span class="parents" data-i18n="parents">יעל, אלון וליבי רפפורט</span>
     </p>
   </main>
 
@@ -765,24 +789,40 @@
 
   <div id="burst" aria-hidden="true"></div>
 
+  <button class="lang-fab" id="langBtn" type="button" aria-label="Switch language / החלפת שפה">EN</button>
+
   <script>
     (function () {
+      var cdDays = null;
+
+      function renderCountdown() {
+        try {
+          var el = document.getElementById("countdown");
+          var txt = document.getElementById("countdown-text");
+          if (!el || !txt || cdDays == null) return;
+          var en = document.documentElement.lang === "en";
+          var msg = "";
+          if (en) {
+            if (cdDays > 1) msg = cdDays + " days to go";
+            else if (cdDays === 1) msg = "1 day to go";
+            else if (cdDays === 0) msg = "The celebration is today!";
+          } else {
+            if (cdDays > 2) msg = "עוד " + cdDays + " ימים";
+            else if (cdDays === 2) msg = "עוד יומיים";
+            else if (cdDays === 1) msg = "עוד יום אחד";
+            else if (cdDays === 0) msg = "החגיגה היום!";
+          }
+          if (msg) { txt.textContent = msg; el.hidden = false; }
+        } catch (e) {}
+      }
+
       // Countdown to the celebration (26 June 2026)
       try {
-        var el = document.getElementById("countdown");
-        var txt = document.getElementById("countdown-text");
-        if (el && txt) {
-          var target = new Date(2026, 5, 26);
-          var now = new Date();
-          var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-          var days = Math.round((target - today) / 86400000);
-          var msg = "";
-          if (days > 2) msg = "עוד " + days + " ימים";
-          else if (days === 2) msg = "עוד יומיים";
-          else if (days === 1) msg = "עוד יום אחד";
-          else if (days === 0) msg = "החגיגה היום!";
-          if (msg) { txt.textContent = msg; el.hidden = false; }
-        }
+        var target = new Date(2026, 5, 26);
+        var now = new Date();
+        var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        cdDays = Math.round((target - today) / 86400000);
+        renderCountdown();
       } catch (e) {}
 
       // Share the invitation
@@ -874,6 +914,58 @@
             if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); doCopy(); }
           });
         }
+      } catch (e) {}
+
+      // Hebrew <-> English toggle
+      try {
+        var I18N_EN = {
+          intro: "With hearts full of joy we are excited to invite you to celebrate the birth of our daughter,",
+          name: "Libi Simcha",
+          certToggle: "Birth certificate",
+          certMinistry: "Ministry of Joy",
+          certHeading: "Birth Registration Certificate",
+          kName: "Name", vName: "Libi Simcha",
+          kDate: "Date of birth",
+          kTime: "Time of birth",
+          kWeight: "Weight", vWeight: "3.4 kg",
+          kParents: "Parents", vParents: "Yael & Alon Rapaport",
+          certNote: "Hereby certified that Libi Simcha joined us with great joy.",
+          detDate: "Friday | 26.06.26",
+          detTime: "Gathering at 12:00",
+          detAddr: "19 Rashi St, Apt 1, Beit Shemesh",
+          rsvp: "RSVP",
+          signLead: "We cannot wait to see you,",
+          parents: "Yael, Alon & Libi Rapaport"
+        };
+        var applyLang = function (lang) {
+          try {
+            var en = lang === "en";
+            document.documentElement.lang = en ? "en" : "he";
+            document.documentElement.dir = en ? "ltr" : "rtl";
+            var nodes = document.querySelectorAll("[data-i18n]");
+            for (var i = 0; i < nodes.length; i++) {
+              var elt = nodes[i], key = elt.getAttribute("data-i18n");
+              if (en) {
+                if (!elt.hasAttribute("data-he")) elt.setAttribute("data-he", elt.innerHTML);
+                if (I18N_EN[key] != null) elt.innerHTML = I18N_EN[key];
+              } else if (elt.hasAttribute("data-he")) {
+                elt.innerHTML = elt.getAttribute("data-he");
+              }
+            }
+            var lb = document.getElementById("langBtn");
+            if (lb) lb.textContent = en ? "עב" : "EN";
+            renderCountdown();
+            try { localStorage.setItem("libi-lang", lang); } catch (e) {}
+          } catch (e) {}
+        };
+        var langBtn = document.getElementById("langBtn");
+        var saved = null;
+        try { saved = localStorage.getItem("libi-lang"); } catch (e) {}
+        if (saved === "en") applyLang("en");
+        if (langBtn) langBtn.addEventListener("click", function (ev) {
+          ev.stopPropagation();
+          applyLang(document.documentElement.lang === "en" ? "he" : "en");
+        });
       } catch (e) {}
 
       // Background music via a hidden YouTube player.
