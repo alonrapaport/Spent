@@ -258,32 +258,47 @@
     .btn--cal { color: #b9852b; }
     .btn--share { color: var(--sage-deep); }
 
-    /* birth-details strip under the photo */
-    .birth-title {
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      color: var(--sage-deep);
-      font-weight: 600;
-      margin: 2px 0 8px;
+    /* birth-details styled as a classic blue-lined birth card */
+    .birth-card {
+      max-width: 290px;
+      margin: 2px auto 6px;
+      background: #fff;
+      border: 1px solid #cde0f0;
+      border-radius: 12px;
+      box-shadow: 0 8px 22px rgba(91, 134, 168, 0.12);
+      padding: 11px 20px 8px;
+      font-family: "Frank Ruhl Libre", serif;
     }
-    .birth {
+    .birth-card__head {
       display: flex;
-      justify-content: center;
-      max-width: 320px;
-      margin: 0 auto 4px;
-    }
-    .birth .stat {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 2px;
-      padding: 0 6px;
+      justify-content: center;
+      gap: 9px;
+      color: #5b86a8;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.1em;
+      padding-bottom: 8px;
+      margin-bottom: 2px;
+      border-bottom: 2px solid #dcebf6;
     }
-    .birth .stat + .stat { border-inline-start: 1px solid var(--line); }
-    .birth .stat svg { width: 18px; height: 18px; color: var(--pink-deep); margin-bottom: 1px; }
-    .birth .stat .v { font-size: 15px; font-weight: 700; color: var(--ink); }
-    .birth .stat .l { font-size: 11.5px; color: var(--ink-soft); letter-spacing: 0.04em; }
+    .birth-card__head svg { width: 19px; height: 19px; flex: none; }
+    .birth-card__head svg:last-child { transform: scaleX(-1); }
+    .bc-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      line-height: 32px;
+      border-bottom: 1px solid #dcebf6;
+    }
+    .bc-row:last-child { border-bottom: 0; }
+    .bc-label {
+      color: #6f99ba;
+      font-weight: 700;
+      font-size: 13.5px;
+      min-width: 48px;
+    }
+    .bc-val { color: var(--ink); font-weight: 500; font-size: 16.5px; }
 
     /* primary CTAs: RSVP + gift */
     .cta-stack { margin: 0 0 26px; }
@@ -525,23 +540,16 @@
       <img src="./libi.jpg" alt="ליבי שמחה, התינוקת שזה עתה נולדה" />
     </div>
 
-    <p class="birth-title reveal">רגע שהגיעה אלינו</p>
-    <div class="birth reveal" aria-label="פרטי הלידה">
-      <div class="stat">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
-        <span class="v">31.5.26</span>
-        <span class="l">תאריך</span>
+    <div class="birth-card reveal" aria-label="כרטיס לידה">
+      <div class="birth-card__head">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="8" cy="15" rx="3" ry="4.3"/><circle cx="5.6" cy="9.6" r="1"/><circle cx="7.7" cy="8.8" r="1.1"/><circle cx="9.7" cy="9.2" r="1"/><ellipse cx="16" cy="16" rx="3" ry="4.3"/><circle cx="14.4" cy="10.6" r="1"/><circle cx="16.5" cy="9.8" r="1.1"/><circle cx="18.5" cy="10.2" r="1"/></svg>
+        כרטיס לידה
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="8" cy="15" rx="3" ry="4.3"/><circle cx="5.6" cy="9.6" r="1"/><circle cx="7.7" cy="8.8" r="1.1"/><circle cx="9.7" cy="9.2" r="1"/><ellipse cx="16" cy="16" rx="3" ry="4.3"/><circle cx="14.4" cy="10.6" r="1"/><circle cx="16.5" cy="9.8" r="1.1"/><circle cx="18.5" cy="10.2" r="1"/></svg>
       </div>
-      <div class="stat">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg>
-        <span class="v">9:58</span>
-        <span class="l">שעה</span>
-      </div>
-      <div class="stat">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21h14a2 2 0 0 0 2-2 9 9 0 0 0-18 0 2 2 0 0 0 2 2z"/><path d="M12 12l2.4-3"/></svg>
-        <span class="v">3.4 ק״ג</span>
-        <span class="l">משקל</span>
-      </div>
+      <div class="bc-row"><span class="bc-label">שם</span><span class="bc-val">ליבי שמחה</span></div>
+      <div class="bc-row"><span class="bc-label">תאריך</span><span class="bc-val">31.5.26</span></div>
+      <div class="bc-row"><span class="bc-label">שעה</span><span class="bc-val">9:58</span></div>
+      <div class="bc-row"><span class="bc-label">משקל</span><span class="bc-val">3.4 ק״ג</span></div>
     </div>
 
     <p class="warm reveal">נשמח לראותכם, לחבק ולהתרגש יחד איתנו.</p>
