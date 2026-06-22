@@ -425,6 +425,21 @@
       animation: pulse 2.6s ease-in-out infinite;
     }
     .music-fab svg { width: 22px; height: 22px; }
+    .music-fab .ic-off { display: none; }
+    .music-fab.is-paused .ic-on { display: none; }
+    .music-fab.is-paused .ic-off { display: inline; }
+    .music-fab.is-paused { animation: none; color: var(--ink-soft); }
+    /* hidden background-music player host (kept in the DOM so audio can play) */
+    #yt-player {
+      position: fixed;
+      width: 1px;
+      height: 1px;
+      left: -9999px;
+      bottom: 0;
+      opacity: 0;
+      pointer-events: none;
+      border: 0;
+    }
     @keyframes pulse {
       0%, 100% { box-shadow: 0 8px 20px rgba(143, 116, 99, 0.18), 0 0 0 0 rgba(226, 182, 176, 0.5); }
       50% { box-shadow: 0 8px 20px rgba(143, 116, 99, 0.18), 0 0 0 9px rgba(226, 182, 176, 0); }
@@ -695,10 +710,6 @@
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.15 1.6 5.96L2 22l4.25-1.68a9.86 9.86 0 0 0 5.79 1.85h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.8c2.16 0 4.19.84 5.72 2.37a8.02 8.02 0 0 1 2.37 5.72c0 4.46-3.63 8.09-8.1 8.09a8.1 8.1 0 0 1-4.12-1.13l-.3-.18-2.52 1 .67-2.46-.19-.31a8.05 8.05 0 0 1-1.24-4.31c0-4.46 3.63-8.09 8.1-8.09zm-2.74 4.2c-.13 0-.34.05-.52.24-.18.19-.69.67-.69 1.64s.71 1.9.81 2.03c.1.13 1.38 2.21 3.42 3.01 1.7.67 2.05.54 2.42.5.37-.03 1.19-.48 1.36-.95.17-.47.17-.87.12-.95-.05-.08-.18-.13-.38-.23-.2-.1-1.19-.59-1.37-.66-.18-.06-.32-.1-.45.1-.13.19-.51.65-.63.79-.12.13-.23.15-.43.05-.2-.1-.85-.31-1.62-1-.6-.53-1-1.19-1.12-1.39-.12-.2-.01-.31.09-.4.09-.09.2-.23.3-.35.1-.12.13-.2.2-.34.07-.13.03-.25-.02-.35-.05-.1-.44-1.11-.62-1.52-.16-.4-.32-.34-.45-.35z"/></svg>
         אישור הגעה
       </a>
-      <a class="cta cta--gift" href="https://www.bitpay.co.il/app/me/63E62446-1E65-8887-FFD3-01806EB4446FB4E5" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8"/><rect x="2.5" y="7" width="19" height="5" rx="1"/><path d="M12 21V7M12 7S11.2 3 8.6 3 6 5.2 6 5.2 6.6 7 9 7M12 7s.8-4 3.4-4S18 5.2 18 5.2 17.4 7 15 7"/></svg>
-        מתנה
-      </a>
     </div>
 
     <div class="icon-actions reveal">
@@ -747,9 +758,11 @@
     <span><svg viewBox="0 0 24 24" fill="#e2b6b0"><path d="M12 21s-7-4.6-9.3-9.2C1.2 8.6 2.7 5 6 5c1.9 0 3.2 1 4 2.3C10.8 6 12.1 5 14 5c3.3 0 4.8 3.6 3.3 6.8C19 16.4 12 21 12 21z"/></svg></span>
   </div>
 
-  <a class="music-fab" href="https://www.youtube.com/watch?v=n_ZoHPEkrKY" target="_blank" rel="noopener" aria-label="השיר שלנו - ליבי, מתי כספי" title="השיר שלנו - ליבי, מתי כספי">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
-  </a>
+  <button type="button" class="music-fab" id="musicBtn" aria-label="השיר שלנו - ליבי, מתי כספי" title="השיר שלנו - ליבי, מתי כספי" aria-pressed="false">
+    <svg class="ic-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+    <svg class="ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/><path d="M3 3l18 18" stroke-width="1.9"/></svg>
+  </button>
+  <div id="yt-player" aria-hidden="true"></div>
 
   <div id="burst" aria-hidden="true"></div>
 
@@ -860,6 +873,74 @@
           addr.addEventListener("click", doCopy);
           addr.addEventListener("keydown", function (ev) {
             if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); doCopy(); }
+          });
+        }
+      } catch (e) {}
+
+      // Background music via a hidden YouTube player.
+      // Note: phone browsers block audio autoplay until a user gesture, so we
+      // also start it on the very first touch/scroll/click anywhere on the page.
+      try {
+        var musicBtn = document.getElementById("musicBtn");
+        var ytPlayer = null, ytReady = false, wantPlaying = true, gestureDone = false;
+
+        var tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(tag);
+
+        function setBtnState(playing) {
+          if (!musicBtn) return;
+          musicBtn.classList.toggle("is-paused", !playing);
+          musicBtn.setAttribute("aria-pressed", playing ? "true" : "false");
+        }
+
+        function tryPlay() {
+          if (ytPlayer && ytReady) { try { ytPlayer.playVideo(); } catch (e) {} }
+        }
+
+        window.onYouTubeIframeAPIReady = function () {
+          try {
+            ytPlayer = new YT.Player("yt-player", {
+              videoId: "n_ZoHPEkrKY",
+              playerVars: {
+                autoplay: 1, loop: 1, playlist: "n_ZoHPEkrKY",
+                controls: 0, playsinline: 1, rel: 0
+              },
+              events: {
+                onReady: function (e) {
+                  ytReady = true;
+                  if (wantPlaying) { try { e.target.playVideo(); } catch (_) {} }
+                },
+                onStateChange: function (e) {
+                  // 1 = playing, 2 = paused, 0 = ended
+                  if (e.data === 1) setBtnState(true);
+                  else if (e.data === 2) setBtnState(false);
+                }
+              }
+            });
+          } catch (e) {}
+        };
+
+        function onFirstGesture() {
+          if (gestureDone) return;
+          gestureDone = true;
+          if (wantPlaying) tryPlay();
+          document.removeEventListener("touchstart", onFirstGesture);
+          document.removeEventListener("click", onFirstGesture);
+          document.removeEventListener("scroll", onFirstGesture);
+        }
+        document.addEventListener("touchstart", onFirstGesture, { passive: true });
+        document.addEventListener("click", onFirstGesture);
+        document.addEventListener("scroll", onFirstGesture, { passive: true });
+
+        if (musicBtn) {
+          musicBtn.addEventListener("click", function (ev) {
+            ev.stopPropagation();
+            if (!ytPlayer || !ytReady) { wantPlaying = true; return; }
+            var st = -1;
+            try { st = ytPlayer.getPlayerState(); } catch (e) {}
+            if (st === 1) { wantPlaying = false; try { ytPlayer.pauseVideo(); } catch (e) {} setBtnState(false); }
+            else { wantPlaying = true; try { ytPlayer.playVideo(); } catch (e) {} setBtnState(true); }
           });
         }
       } catch (e) {}
