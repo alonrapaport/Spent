@@ -258,47 +258,108 @@
     .btn--cal { color: #b9852b; }
     .btn--share { color: var(--sage-deep); }
 
-    /* birth-details styled as a classic blue-lined birth card */
-    .birth-card {
-      max-width: 290px;
-      margin: 2px auto 6px;
-      background: #fff;
-      border: 1px solid #cde0f0;
-      border-radius: 12px;
-      box-shadow: 0 8px 22px rgba(91, 134, 168, 0.12);
-      padding: 11px 20px 8px;
-      font-family: "Frank Ruhl Libre", serif;
-    }
-    .birth-card__head {
-      display: flex;
+    /* birth details as a collapsible vintage Israeli birth certificate */
+    .birth { margin: 4px auto 8px; }
+    .birth-toggle {
+      list-style: none;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 9px;
-      color: #5b86a8;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #f4ecd6;
+      border: 1px solid #cbb88f;
+      color: #27406e;
+      font-family: "Frank Ruhl Libre", serif;
       font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 0.1em;
-      padding-bottom: 8px;
-      margin-bottom: 2px;
-      border-bottom: 2px solid #dcebf6;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(91, 100, 140, 0.14);
+      user-select: none;
     }
-    .birth-card__head svg { width: 19px; height: 19px; flex: none; }
-    .birth-card__head svg:last-child { transform: scaleX(-1); }
-    .bc-row {
+    .birth-toggle::-webkit-details-marker { display: none; }
+    .birth-toggle .feet { width: 18px; height: 18px; flex: none; color: #27406e; }
+    .birth-toggle .chev { width: 13px; height: 13px; flex: none; transition: transform 0.2s ease; }
+    .birth[open] .birth-toggle .chev { transform: rotate(180deg); }
+    .birth[open] .birth-toggle { margin-bottom: 12px; }
+
+    .cert {
+      position: relative;
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 15px 18px 16px;
+      text-align: center;
+      color: #27406e;
+      font-family: "Frank Ruhl Libre", serif;
+      background: radial-gradient(120% 80% at 50% 0%, #f8f0db 0%, #efe3c4 70%, #e7dab6 100%);
+      border: 1.5px solid #27406e;
+      border-radius: 4px;
+      box-shadow: 0 12px 30px rgba(91, 80, 50, 0.22);
+      overflow: hidden;
+    }
+    .cert::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(39, 64, 110, 0.5);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .cert__serial {
+      position: absolute;
+      top: 9px;
+      right: 12px;
+      font-size: 10.5px;
+      letter-spacing: 0.03em;
+      opacity: 0.75;
+    }
+    .cert__emblem { display: flex; justify-content: center; }
+    .cert__emblem svg { width: 32px; height: 32px; }
+    .cert__ministry { font-size: 11.5px; letter-spacing: 0.14em; margin-top: 1px; }
+    .cert__heading {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding-bottom: 8px;
+      margin-bottom: 7px;
+      border-bottom: 1.5px solid rgba(39, 64, 110, 0.4);
+    }
+    .cert-row {
       display: flex;
       align-items: baseline;
-      gap: 8px;
-      line-height: 32px;
-      border-bottom: 1px solid #dcebf6;
-    }
-    .bc-row:last-child { border-bottom: 0; }
-    .bc-label {
-      color: #6f99ba;
-      font-weight: 700;
+      gap: 6px;
       font-size: 13.5px;
-      min-width: 48px;
+      padding: 3px 0;
+      text-align: right;
     }
-    .bc-val { color: var(--ink); font-weight: 500; font-size: 16.5px; }
+    .cert-row .k { font-weight: 700; white-space: nowrap; }
+    .cert-row .dots {
+      flex: 1;
+      align-self: center;
+      border-bottom: 1.5px dotted rgba(39, 64, 110, 0.5);
+      margin: 0 3px;
+    }
+    .cert-row .v { white-space: nowrap; color: #2e6e86; font-weight: 600; }
+    .cert__note {
+      position: relative;
+      z-index: 1;
+      margin-top: 10px;
+      font-size: 11px;
+      font-style: italic;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+    .cert__seal {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      width: 50px;
+      height: 50px;
+      color: #6a5a86;
+      opacity: 0.4;
+      transform: rotate(-13deg);
+    }
 
     /* primary CTAs: RSVP + gift */
     .cta-stack { margin: 0 0 26px; }
@@ -540,17 +601,43 @@
       <img src="./libi.jpg" alt="ליבי שמחה, התינוקת שזה עתה נולדה" />
     </div>
 
-    <div class="birth-card reveal" aria-label="כרטיס לידה">
-      <div class="birth-card__head">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="8" cy="15" rx="3" ry="4.3"/><circle cx="5.6" cy="9.6" r="1"/><circle cx="7.7" cy="8.8" r="1.1"/><circle cx="9.7" cy="9.2" r="1"/><ellipse cx="16" cy="16" rx="3" ry="4.3"/><circle cx="14.4" cy="10.6" r="1"/><circle cx="16.5" cy="9.8" r="1.1"/><circle cx="18.5" cy="10.2" r="1"/></svg>
-        כרטיס לידה
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="8" cy="15" rx="3" ry="4.3"/><circle cx="5.6" cy="9.6" r="1"/><circle cx="7.7" cy="8.8" r="1.1"/><circle cx="9.7" cy="9.2" r="1"/><ellipse cx="16" cy="16" rx="3" ry="4.3"/><circle cx="14.4" cy="10.6" r="1"/><circle cx="16.5" cy="9.8" r="1.1"/><circle cx="18.5" cy="10.2" r="1"/></svg>
+    <details class="birth reveal">
+      <summary class="birth-toggle">
+        <svg class="feet" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="8" cy="15" rx="3" ry="4.3"/><circle cx="5.6" cy="9.6" r="1"/><circle cx="7.7" cy="8.8" r="1.1"/><circle cx="9.7" cy="9.2" r="1"/><ellipse cx="16" cy="16" rx="3" ry="4.3"/><circle cx="14.4" cy="10.6" r="1"/><circle cx="16.5" cy="9.8" r="1.1"/><circle cx="18.5" cy="10.2" r="1"/></svg>
+        תעודת לידה
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="cert">
+        <span class="cert__serial">№ 31·05·26</span>
+        <div class="cert__emblem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 5.8Q12 14 20 5.8"/>
+            <path d="M6.7 5.8Q12 12.6 17.3 5.8"/>
+            <path d="M9.4 5.8Q12 11.2 14.6 5.8"/>
+            <path d="M12 5.8V17"/>
+            <path d="M9.3 17h5.4"/>
+            <path d="M10.2 17l-.5 2.4h4.6l-.5-2.4"/>
+            <g fill="currentColor" stroke="none">
+              <circle cx="4" cy="5" r=".85"/><circle cx="6.7" cy="5" r=".85"/><circle cx="9.4" cy="5" r=".85"/><circle cx="12" cy="5" r=".85"/><circle cx="14.6" cy="5" r=".85"/><circle cx="17.3" cy="5" r=".85"/><circle cx="20" cy="5" r=".85"/>
+            </g>
+          </svg>
+        </div>
+        <div class="cert__ministry">משרד השמחה</div>
+        <div class="cert__heading">תעודת רישום לידה</div>
+        <div class="cert-row"><span class="k">שם הילודה</span><span class="dots"></span><span class="v">ליבי שמחה</span></div>
+        <div class="cert-row"><span class="k">תאריך הלידה</span><span class="dots"></span><span class="v">31.5.26</span></div>
+        <div class="cert-row"><span class="k">שעת הלידה</span><span class="dots"></span><span class="v">9:58</span></div>
+        <div class="cert-row"><span class="k">משקל</span><span class="dots"></span><span class="v">3.4 ק״ג</span></div>
+        <div class="cert-row"><span class="k">ההורים</span><span class="dots"></span><span class="v">יעל ואלון רפפורט</span></div>
+        <p class="cert__note">וזאת לעדה כי ליבי שמחה הצטרפה אלינו בשמחה גדולה.</p>
+        <svg class="cert__seal" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="32" cy="32" r="29"/>
+          <circle cx="32" cy="32" r="22" stroke-dasharray="3 3"/>
+          <path d="M32 20l9.5 16.5h-19z"/>
+          <path d="M32 44l-9.5-16.5h19z"/>
+        </svg>
       </div>
-      <div class="bc-row"><span class="bc-label">שם</span><span class="bc-val">ליבי שמחה</span></div>
-      <div class="bc-row"><span class="bc-label">תאריך</span><span class="bc-val">31.5.26</span></div>
-      <div class="bc-row"><span class="bc-label">שעה</span><span class="bc-val">9:58</span></div>
-      <div class="bc-row"><span class="bc-label">משקל</span><span class="bc-val">3.4 ק״ג</span></div>
-    </div>
+    </details>
 
     <p class="warm reveal">נשמח לראותכם, לחבק ולהתרגש יחד איתנו.</p>
 
